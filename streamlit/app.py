@@ -829,7 +829,23 @@ def load_data_ui() -> tuple[pd.DataFrame, str, datetime | None]:
     else:
         path = DEFAULT_DATA_PATH
     if not path.exists():
-        st.error(f"No data file found. Put your file here: {DEFAULT_DATA_PATH}")
+        st.markdown(
+            f"""
+            <div class='story'>
+                <div class='eyebrow'>Data required</div>
+                <div class='headline'>Upload the approved master workbook to start the dashboard</div>
+                <div class='bodycopy'>
+                    This public deployment does not include the raw Excel workbook, because policy and claims data should not be committed to GitHub.
+                    Use the upload box in the sidebar to load the approved <strong>XLSX, XLS, CSV, or Parquet</strong> file.
+                    Once uploaded, all KPI cards, charts, insights, rule simulations, and triage outputs will recalculate from that file.
+                    <br><br>
+                    For local development only, the default preload path is:
+                    <span class='small-mono'>{escape(str(DEFAULT_DATA_PATH))}</span>
+                </div>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
         st.stop()
     mtime = path.stat().st_mtime
     df = load_from_path(str(path), mtime)
