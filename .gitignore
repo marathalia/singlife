@@ -1,0 +1,24 @@
+# Python / Streamlit runtime
+__pycache__/
+*.py[cod]
+.venv/
+.env
+.DS_Store
+.Rhistory
+.dashboard_cache/
+
+# Raw or generated data artifacts
+*.xlsx
+*.xls
+*.parquet
+*.pkl
+ntu_uc2_outputs/
+ntu_seqno_outputs/
+outputs_shared/
+outputs_shared_anaconda/
+uc2/
+streamlit/data/
+
+# Notebook checkpoints and local scratch
+.ipynb_checkpoints/
+untitled folder/
